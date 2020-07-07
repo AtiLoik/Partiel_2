@@ -17,4 +17,6 @@ public interface IStudentDao {
 	public void deleteStudent(int id);
 	
 	public void  updateStudent(Student student);
+	
+	public boolean authentificate(String mail,String psswrd);
 }

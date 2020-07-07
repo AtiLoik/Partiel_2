@@ -16,6 +16,48 @@ public class StudentDao {
 	private String sql_password = "";
 	
 	/**
+	 *  Authentification 
+	 * @param mail
+	 * @param psswrd
+	 * @return true or false
+	 */
+	
+	public Boolean authentificate(String mail,String psswrd) {
+        Connection cn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = DriverManager.getConnection(url, sql_login, sql_password);
+            st = cn.createStatement();
+
+            String sql = "SELECT * " + 
+                    "FROM " + 
+                    "    ds_users u " + 
+                    "       INNER JOIN ds_users_loggable l ON u.user_id = l.user_id " + 
+                    "WHERE " + 
+                    "    lower(l.login) = lower('"+mail+"') " + 
+                    "    AND l.password = '"+psswrd+"'" ;
+
+            rs = st.executeQuery(sql);
+
+            if(rs.next()) {
+                return true;
+            }
+            cn.close();
+            st.close();
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+        }
+	
+	
+	/**
 	 * Create a student
 	 * @param student
 	 */
