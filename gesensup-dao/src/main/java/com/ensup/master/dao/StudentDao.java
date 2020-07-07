@@ -17,6 +17,48 @@ public class StudentDao implements IStudentDao {
 	private String sql_password = "";
 	
 	/**
+	 *  Authentification 
+	 * @param mail
+	 * @param psswrd
+	 * @return true or false
+	 */
+	
+	public Boolean authentificate(String mail,String psswrd) {
+        Connection cn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cn = DriverManager.getConnection(url, sql_login, sql_password);
+            st = cn.createStatement();
+
+            String sql = "SELECT * " + 
+                    "FROM " + 
+                    "    ds_users u " + 
+                    "       INNER JOIN ds_users_loggable l ON u.user_id = l.user_id " + 
+                    "WHERE " + 
+                    "    lower(l.login) = lower('"+mail+"') " + 
+                    "    AND l.password = '"+psswrd+"'" ;
+
+            rs = st.executeQuery(sql);
+
+            if(rs.next()) {
+                return true;
+            }
+            cn.close();
+            st.close();
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+        }
+	
+	
+	/**
 	 * Create a student
 	 * @param student
 	 */
@@ -28,7 +70,7 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "INSERT INTO ds_user (user_firstname, user_lastname, user_mail,user_adress,user_phone,user_birthdate) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
+			String sql = "INSERT INTO ds_users (user_firstname, user_lastname, user_email,user_address,user_phone,user_birthdate) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
 			
 			st.executeUpdate(sql);
 			
@@ -58,7 +100,7 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_id = '"+ id +"'";
+			String sql = "SELECT * FROM ds_users WHERE user_id = '"+ id +"'";
 			
 			rs = st.executeQuery(sql);
 			
@@ -91,7 +133,7 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_email= '"+ email +"'";
+			String sql = "SELECT * FROM ds_users WHERE user_email= '"+ email +"'";
 			
 			rs = st.executeQuery(sql);
 			
@@ -124,7 +166,7 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user";
+			String sql = "SELECT * FROM ds_users";
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -158,7 +200,7 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "DELETE FROM ds_ user WHERE user_id = '"+ id +"'";
+			String sql = "DELETE FROM ds_ users WHERE user_id = '"+ id +"'";
 			
 			st.executeUpdate(sql);
 			
@@ -191,8 +233,8 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "UPDATE ds_user set user_firstname ='"+student.getFirstName()+"', user_lastname= '"+student.getLastName()+"', user_mail='"+student.getMailAdresse()+"',"
-						+ "	user_adress= '"+student.getAdress()+"',user_phone = '"+student.getNumberPhone()+"',user_birthdate='"+student.getLastName()+"' where user_id='"+student.getId() +"'" ;
+			String sql = "UPDATE ds_users set user_firstname ='"+student.getFirstName()+"', user_lastname= '"+student.getLastName()+"', user_email='"+student.getMailAdresse()+"',"
+						+ "	user_address= '"+student.getAdress()+"',user_phone = '"+student.getNumberPhone()+"',user_birthdate='"+student.getLastName()+"' where user_id='"+student.getId() +"'" ;
 			resultat=st.executeUpdate(sql);
 			if(resultat==0) {
 				System.out.println("Aucune modification n'a était faite");
