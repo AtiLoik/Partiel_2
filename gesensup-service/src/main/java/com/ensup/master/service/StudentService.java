@@ -1,4 +1,4 @@
-package com.ensup.master.serviceImpl;
+package com.ensup.master.service;
 
 import java.util.List;
 
