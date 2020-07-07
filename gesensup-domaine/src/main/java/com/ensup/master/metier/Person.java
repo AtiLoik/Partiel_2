@@ -15,6 +15,8 @@ public class Person {
 	private String adress;
 	private String numberPhone;
 	
+	public Person() {}
+	
 	public Person(int id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone) {
 		super();
 		this.id = id;

@@ -1,5 +1,6 @@
 // Classe delete servlet du projet Formulaire Java JSP Servlet
-package com.objis.gestionformationssession.presentation.servlet;
+package com.ensup.master.servlets;
+
 
 import java.io.IOException;
 
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.objis.gestionformationssession.service.ServiceGestion;
+import com.ensup.master.dao.StudentDao;
+import com.ensup.master.serviceImpl.StudentService;
+
 
 /**
  * Servlet implementation class DeleteServlet
@@ -31,11 +34,13 @@ public class DeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		StudentDao dao =new StudentDao();
 		RequestDispatcher dispatcher;
-		ServiceGestion serviceGestion = new ServiceGestion();
-		serviceGestion.delete(email);
-		dispatcher = request.getRequestDispatcher("accueil.jsp");
+		StudentService studentService = new StudentService(dao);
+		studentService.deleteStudent(id);
+		dispatcher = request.getRequestDispatcher("listeUsers.jsp");
 		dispatcher.forward(request, response);
 	}
 

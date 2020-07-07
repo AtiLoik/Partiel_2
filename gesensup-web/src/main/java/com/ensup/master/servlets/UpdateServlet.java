@@ -1,7 +1,10 @@
-package com.objis.gestionformationssession.presentation.servlet;
+package com.ensup.master.servlets;
 
 //Classe update servlet du projet Formulaire Java JSP Servlet
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.objis.gestionformationssession.dao.UserDAO;
-import com.objis.gestionformationssession.service.ServiceGestion;
+import com.ensup.master.dao.StudentDao;
+import com.ensup.master.metier.Student;
+import com.ensup.master.serviceImpl.StudentService;
+
 
 /**
  * Servlet implementation class UpdateServlet
@@ -30,15 +35,28 @@ public class UpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String l_email = request.getParameter("l_email");
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
+		String nom = request.getParameter("name");
+		int id = Integer.parseInt(request.getParameter("id"));
+		String prenom = request.getParameter("firstname");
 		String email = request.getParameter("email");
-		String mdp = request.getParameter("mdp");
+		String adresse = request.getParameter("adress");
+		String telephone = request.getParameter("phone");
+		String date = request.getParameter("birthday");
+		Date date1=null;
+		try {
+			date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		
+		StudentDao dao =new StudentDao();
 		RequestDispatcher dispatcher;
-		ServiceGestion serviceGestion = new ServiceGestion();
-		serviceGestion.update(l_email,nom, prenom, email, mdp);
-		dispatcher = request.getRequestDispatcher("accueil.jsp");
+		StudentService studentService = new StudentService(dao);
+		Student student = new Student(id,prenom,nom,email,adresse,telephone,date1);
+		studentService.updateStudent(student);
+		dispatcher = request.getRequestDispatcher("listeUsers.jsp");
 		dispatcher.forward(request, response);
 	}
 
