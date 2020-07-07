@@ -23,7 +23,7 @@ public class StudentDao implements IStudentDao {
 	 * @return true or false
 	 */
 	
-	public Boolean authentificate(String mail,String psswrd) {
+	public boolean authentificate(String mail,String psswrd) {
         Connection cn = null;
         Statement st = null;
         ResultSet rs = null;

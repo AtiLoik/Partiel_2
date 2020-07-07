@@ -48,5 +48,7 @@ public interface IStudentService  {
 	 * @return
 	 */
 	public Student getUser(String email);
+	
+	public boolean authentification(String login,String pwd);
 
 }

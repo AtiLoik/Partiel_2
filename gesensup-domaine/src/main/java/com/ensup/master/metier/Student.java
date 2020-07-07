@@ -17,6 +17,9 @@ public class Student extends Person {
 		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
 		this.dateOfBirth = dateOfBirth;
 	}
+	public Student() {
+		super();
+	}
 
 	
 	public Date getDateOfBirth() {

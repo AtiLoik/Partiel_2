@@ -4,9 +4,12 @@
  * @author Master 1 ED2O
  * @version 0.0.1
  */
-package com.objis.gestionformationssession.presentation.servlet;
+package com.ensup.master.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.objis.gestionformationssession.dao.UserDAO;
-import com.objis.gestionformationssession.metier.User;
-import com.objis.gestionformationssession.service.ServiceGestion;
+import com.ensup.master.dao.StudentDao;
+import com.ensup.master.metier.Student;
+import com.ensup.master.serviceImpl.StudentService;
+
 
 /**
  * Servlet implementation class InscriptionServlet
@@ -26,7 +30,6 @@ import com.objis.gestionformationssession.service.ServiceGestion;
 @WebServlet("/InscriptionServlet")
 public class InscriptionServlet extends HttpServlet {
 	
-	private UserDAO userDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,29 +37,33 @@ public class InscriptionServlet extends HttpServlet {
     public InscriptionServlet() {
         super();
 
-		userDAO = new UserDAO();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
+		String nom = request.getParameter("name");
+		String prenom = request.getParameter("firstname");
 		String email = request.getParameter("email");
-		String mdp = request.getParameter("mdp");
+		String adresse = request.getParameter("adress");
+		String telephone = request.getParameter("phone");
+		String date = request.getParameter("birthday");
+		Date date1=null;
+		try {
+			date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
+		StudentDao dao =new StudentDao();
 		RequestDispatcher dispatcher;
-		ServiceGestion serviceGestion = new ServiceGestion();
-		
-		serviceGestion.create(nom, prenom, email, mdp);
-		
-		User user = new User(email, mdp, email, mdp);
-		
+		StudentService ss = new StudentService(dao);
+		Student student = new Student(0,prenom,nom,email,adresse,telephone,date1);
+		ss.createStudent(student);
 		HttpSession session = request.getSession();
-		session.setAttribute("utilisateur", user);
-		dispatcher = request.getRequestDispatcher("accueil.jsp");
-		
+		dispatcher = request.getRequestDispatcher("home.jsp");
 		dispatcher.forward(request, response);
 	}
 
