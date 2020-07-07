@@ -5,7 +5,11 @@ import java.util.List;
 import com.ensup.master.daoImpl.IStudentDao;
 import com.ensup.master.metier.Student;
 
-
+/**
+ * Interface contractant les méthodes qui concerne les Student.
+ * @author M1 ED2O
+ *
+ */
 public interface IStudentService  {
 	
 	public void  StudentService(IStudentDao dao);

@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet servant à authentifier un utilisateur.
+ * @author Benjy
+ *
+ */
 public class AuthentificationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
