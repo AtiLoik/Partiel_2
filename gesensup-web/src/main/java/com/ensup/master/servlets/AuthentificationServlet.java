@@ -16,10 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.dao.StudentDao;
+import com.ensup.master.daoImpl.IStudentDao;
+import com.ensup.master.metier.Student;
+import com.ensup.master.serviceImpl.StudentService;
+
 /**
  * Servlet implementation class AuthentificationServlet
  */
 @WebServlet("/AuthentificationServlet")
+/*
  * Servlet servant à authentifier un utilisateur.
  * @author Benjy
  *
@@ -49,15 +55,16 @@ public class AuthentificationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		RequestDispatcher dispatcher;
-		ServiceGestion auth = new ServiceGestion();
+		StudentDao dao =new StudentDao();
+		StudentService auth = new StudentService(dao);
 		
-		if(auth.authentificate(login, password)) {
-			User user = auth.getUser(login);
+		if(auth.authentification(login, password)) {
+			Student user = auth.getUser(login);
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", user);
-			dispatcher = request.getRequestDispatcher("accueil.jsp");
+			dispatcher = request.getRequestDispatcher("home.jsp");
 		}else {
-			dispatcher = request.getRequestDispatcher("login.html");
+			dispatcher = request.getRequestDispatcher("login.jsp");
 		}
 		
 		dispatcher.forward(request, response);

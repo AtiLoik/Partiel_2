@@ -75,5 +75,12 @@ public class StudentService implements IStudentService {
 		
 	}
 
+	@Override
+	public boolean authentification(String login, String pwd) {
+		// TODO Auto-generated method stub
+		
+		return dao.authentificate(login, pwd);
+	}
+
 
 }
