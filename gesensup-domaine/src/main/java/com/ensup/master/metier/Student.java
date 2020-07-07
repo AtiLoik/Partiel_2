@@ -10,10 +10,10 @@ import java.util.Date;
  */
 public class Student extends Person {
 
-	private Date dateOfBirth;
+	private String dateOfBirth;
 
 	public Student(int id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
-			Date dateOfBirth) {
+			String dateOfBirth) {
 		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
 		this.dateOfBirth = dateOfBirth;
 	}
@@ -22,12 +22,12 @@ public class Student extends Person {
 	}
 
 	
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

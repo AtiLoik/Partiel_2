@@ -49,18 +49,18 @@ public class InscriptionServlet extends HttpServlet {
 		String adresse = request.getParameter("adress");
 		String telephone = request.getParameter("phone");
 		String date = request.getParameter("birthday");
-		Date date1=null;
-		try {
-			date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		//Date date1=null;
+//		try {
+//			date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
 		
-		StudentDao dao =new StudentDao();
+		StudentDao dao = new StudentDao();
 		RequestDispatcher dispatcher;
 		StudentService ss = new StudentService(dao);
-		Student student = new Student(0,prenom,nom,email,adresse,telephone,date1);
+		Student student = new Student(0,prenom,nom,email,adresse,telephone,date);
 		ss.createStudent(student);
 		HttpSession session = request.getSession();
 		dispatcher = request.getRequestDispatcher("home.jsp");

@@ -10,9 +10,5 @@
 		<description></description>
 		<servlet-class>com.ensup.master.servlets.AuthentificationServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>AuthentificationServlet</servlet-name>
-		<url-pattern>/AuthentificationServlet</url-pattern>
-	</servlet-mapping>
 	
 </web-app>

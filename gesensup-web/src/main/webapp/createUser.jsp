@@ -13,7 +13,7 @@
 		
 			<%@include file="menu.jsp" %>
 			
-			<form class="mb-0" method="POST" action="">
+			<form class="mb-0" method="POST" action="InscriptionServlet">
 				<div class="card shadow mt-5" style="width: 50%; margin: auto">
 					<div class="card-header text-light bg-primary mb-0">
 						<h1 class="card-title mb-0" style="font-size: 150%;"><i class="fas fa-user-plus"></i> Création un nouvel élève</h1>

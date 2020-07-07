@@ -14,7 +14,7 @@
 					<div class="card-title">
 						<h1 class="card-title">Connexion</h1>
 						<hr>
-						<form class="mb-0" method="POST" action="">
+						<form class="mb-0" method="POST" action="AuthentificationServlet">
 							<div class="form-group">
 								<small class="form-text text-muted" style="float: left">Votre email</small>
 								<input class="form-control" type="text" name="login">

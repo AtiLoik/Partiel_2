@@ -16,44 +16,35 @@ import com.ensup.master.dao.StudentDao;
 import com.ensup.master.metier.Student;
 import com.ensup.master.serviceImpl.StudentService;
 
-/**
- * Servlet implementation class ListServlet
- */
 @WebServlet("/ListServlet")
 public class ListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+ 
     public ListServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("**********************************************************************************************************************************************************************************************");
+		
 		RequestDispatcher dispatcher;
 		List<Student> listStudents = new ArrayList<Student>();
 		HttpSession session = request.getSession();
 		StudentDao dao =new StudentDao();
 		StudentService auth = new StudentService(dao);
 		
-		listStudents=auth.readAllStudent();
+		listStudents = auth.readAllStudent();
+		request.setAttribute("students", listStudents);
+		//session.setAttribute("students", listStudents);
 		
-		session.setAttribute("utilisateurs", listStudents);
+		this.getServletContext().getRequestDispatcher( "listeUsers.jsp" ).forward( request, response );
 		
-		dispatcher = request.getRequestDispatcher("liste.jsp");
-		dispatcher.forward(request, response);
+//		dispatcher = request.getRequestDispatcher("listeUsers.jsp");
+//		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

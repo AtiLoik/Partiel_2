@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.ensup.master.metier.Student" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,28 +17,34 @@
 		
 			<%@include file="menu.jsp" %>
 			
-			
+			<% ArrayList<Student> listStudent = (ArrayList<Student>) request.getAttribute("students"); %>
 			
 			<table id="table_id" class="display">
 			    <thead>
 			        <tr>
-			            <th>Column 1</th>
-			            <th>Column 2</th>
+			            <th>#ID</th>
+			            <th>Prénom</th>
+			            <th>Nom</th>
+			            <th>Email</th>
+			            <th>Adresse</th>
+			            <th>Numéro de téléphone</th>
+			            <th>Date de naissance</th>
 			        </tr>
 			    </thead>
 			    <tbody>
+			    	<% for(Student student : listStudent) { %>
 			        <tr>
-			            <td>Row 1 Data 1</td>
-			            <td>Row 1 Data 2</td>
+			            <td><%= student.getId() %></td>
+			       		<td><%= student.getLastName() %></td>
+			       		<td><%= student.getFirstName() %></td>
+			       		<td><%= student.getMailAdresse() %></td>
+			       		<td><%= student.getAdress() %></td>
+			       		<td><%= student.getNumberPhone() %></td>
+			       		<td>Date</td>
 			        </tr>
-			        <tr>
-			            <td>Row 2 Data 1</td>
-			            <td>Row 2 Data 2</td>
-			        </tr>
+			        <% } %>
 			    </tbody>
 			</table>
-			
-			
 		</div>
 	</body>
 </html>

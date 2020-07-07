@@ -12,9 +12,13 @@ import com.ensup.master.metier.Student;
 
 public class StudentDao implements IStudentDao {
 
-	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private String sql_login = "root";
-	private String sql_password = "";
+	private String url = "jdbc:mysql://dougschool.instrurap.fr/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private String sql_login = "app";
+	private String sql_password = "app";
+	
+//	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+//	private String sql_login = "app";
+//	private String sql_password = "app";
 	
 	/**
 	 *  Authentification 
@@ -106,7 +110,7 @@ public class StudentDao implements IStudentDao {
 			
 			if(rs.next()) {
 				return new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-									rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate"));
+									rs.getString("user_address"), rs.getString("user_phone"), rs.getString("user_birthdate"));
 			}
 			cn.close();
 			st.close();
@@ -139,7 +143,7 @@ public class StudentDao implements IStudentDao {
 			
 			if(rs.next()) {
 				return (new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-						rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate")));
+						rs.getString("user_address"), rs.getString("user_phone"), rs.getString("user_birthdate")));
 			}
 			cn.close();
 			st.close();
@@ -166,12 +170,12 @@ public class StudentDao implements IStudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_users";
+			String sql = "SELECT * FROM ds_users_students a INNER JOIN ds_users b ON a.user_id = b.user_id";
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
 				students.add(new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-						rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate")));
+						rs.getString("user_address"), rs.getString("user_phone"), rs.getString("user_birthdate")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

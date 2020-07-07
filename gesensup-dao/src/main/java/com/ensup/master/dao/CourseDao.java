@@ -12,9 +12,13 @@ import com.ensup.master.metier.Course;
 public class CourseDao implements ICourseDao {
 
 	
-	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	private String sql_login = "root";
-	private String sql_password = "";
+	private String url = "jdbc:mysql://dougschool.instrurap.fr/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private String sql_login = "app";
+	private String sql_password = "app";
+	
+//	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+//	private String sql_login = "app";
+//	private String sql_password = "app";
 	
 	
 	/**
