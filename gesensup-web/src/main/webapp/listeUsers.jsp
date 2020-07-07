@@ -34,6 +34,7 @@
 			    <tbody>
 			    	<% for(Student student : listStudent) { %>
 			        <tr>
+<<<<<<< HEAD
 			            <td><%= student.getId() %></td>
 			       		<td><%= student.getLastName() %></td>
 			       		<td><%= student.getFirstName() %></td>
@@ -43,6 +44,11 @@
 			       		<td>Date</td>
 			        </tr>
 			        <% } %>
+=======
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+>>>>>>> en cours
 			    </tbody>
 			</table>
 		</div>
