@@ -1,8 +1,7 @@
-
 package com.ensup.master.metier;
 /**
- * Class Course
- *  
+ * Classe Course
+ * Représente un cours dans la base de données.
  * @author DANON
  *
  */

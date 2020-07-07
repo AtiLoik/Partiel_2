@@ -5,7 +5,8 @@ import com.ensup.master.metier.Course;
 import com.ensup.master.service.ICourseService;
 
 /**
- * CourseService
+ * Classe CourseService
+ * Représente la gestion des cours.
  * 
  * @author DANON
  *
@@ -20,8 +21,8 @@ public class CourseService implements ICourseService {
 
 	/**
 	 * associate course 
-	 * @param course
-	 * @param id
+	 * @param course Le cours à associer.
+	 * @param id L'id de l'étudiant à qui associer le cours.
 	 */
 	public void associateCourse(Course course, int id) {
 		dao.associateCourse(course, id);

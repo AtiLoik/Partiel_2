@@ -1,8 +1,8 @@
 package com.ensup.master.metier;
 
 /**
- * Class Person
- * 
+ * Classe Person
+ * Représente une personne dans la base de données.
  * @author DANON
  *
  */

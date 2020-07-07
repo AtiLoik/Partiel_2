@@ -20,6 +20,10 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class AuthentificationServlet
  */
 @WebServlet("/AuthentificationServlet")
+ * Servlet servant à authentifier un utilisateur.
+ * @author Benjy
+ *
+ */
 public class AuthentificationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

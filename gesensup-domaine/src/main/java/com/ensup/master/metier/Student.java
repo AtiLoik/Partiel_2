@@ -3,8 +3,8 @@ package com.ensup.master.metier;
 import java.util.Date;
 
 /**
- * Class Student
- * 
+ * Classe Student
+ * Représente un étudiant dans la base de données.
  * @author Student
  *
  */

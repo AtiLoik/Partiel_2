@@ -16,7 +16,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for simple App.
+ * Classe de tests unitaires.
+ * @author M1 ED2O
+ *
  */
 public class AppTest {
 
