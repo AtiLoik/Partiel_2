@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.ensup.master.metier.Student" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,7 +17,7 @@
 		
 			<%@include file="menu.jsp" %>
 			
-			
+			<% List<Student> listStudent = (List<Student>) session.getAttribute("students"); %>
 			
 			<table id="table_id" class="display">
 			    <thead>
@@ -30,14 +32,19 @@
 			        </tr>
 			    </thead>
 			    <tbody>
+			    	<% for(Student student : listStudent) { %>
 			        <tr>
-			            <td>Row 1 Data 1</td>
-			            <td>Row 1 Data 2</td>
+			            <td><%= student.getId() %></td>
+			       		<td><%= student.getLastName() %></td>
+			       		<td><%= student.getFirstName() %></td>
+			       		<td><%= student.getMailAdresse() %></td>
+			       		<td><%= student.getAdress() %></td>
+			       		<td><%= student.getNumberPhone() %></td>
+			       		<td>Date</td>
 			        </tr>
+			        <% } %>
 			    </tbody>
 			</table>
-			
-			
 		</div>
 	</body>
 </html>

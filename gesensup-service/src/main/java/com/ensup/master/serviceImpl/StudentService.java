@@ -55,7 +55,6 @@ public class StudentService implements IStudentService {
 	 * @return
 	 */
 	public Student getStudent(int i) {
-		// TODO Auto-generated method stub
 		return dao.getStudent(i);
 	}
 

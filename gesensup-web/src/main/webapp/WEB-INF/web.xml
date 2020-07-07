@@ -14,5 +14,4 @@
 		<servlet-name>AuthentificationServlet</servlet-name>
 		<url-pattern>/AuthentificationServlet</url-pattern>
 	</servlet-mapping>
-	
 </web-app>
