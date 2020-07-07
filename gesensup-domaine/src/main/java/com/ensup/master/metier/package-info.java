@@ -1,4 +1,4 @@
 /**
- * Package métier pour les classes du projets.
+ * Package contenant les classes métier.
  */
 package com.ensup.master.metier;

@@ -3,8 +3,8 @@ package com.ensup.master.metier;
 import java.util.Date;
 
 /**
- * Class Student
- * 
+ * Classe Student
+ * Représente un étudiant dans la base de données.
  * @author Student
  *
  */
@@ -17,6 +17,17 @@ public class Student extends Person {
 		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
 
 	@Override
 	public String toString() {
