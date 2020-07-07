@@ -27,7 +27,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "INSERT INTO ds_user (user_firstname, user_lastname, user_mail,user_adress,user_phone,user_birthdate) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
+			String sql = "INSERT INTO ds_users (user_firstname, user_lastname, user_email,user_address,user_phone,user_birthdate) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
 			
 			st.executeUpdate(sql);
 			
@@ -57,7 +57,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_id = '"+ id +"'";
+			String sql = "SELECT * FROM ds_users WHERE user_id = '"+ id +"'";
 			
 			rs = st.executeQuery(sql);
 			
@@ -90,7 +90,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_email= '"+ email +"'";
+			String sql = "SELECT * FROM ds_users WHERE user_email= '"+ email +"'";
 			
 			rs = st.executeQuery(sql);
 			
@@ -123,7 +123,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user";
+			String sql = "SELECT * FROM ds_users";
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -157,7 +157,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "DELETE FROM ds_ user WHERE user_id = '"+ id +"'";
+			String sql = "DELETE FROM ds_ users WHERE user_id = '"+ id +"'";
 			
 			st.executeUpdate(sql);
 			
@@ -190,8 +190,8 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "UPDATE ds_user set user_firstname ='"+student.getFirstName()+"', user_lastname= '"+student.getLastName()+"', user_mail='"+student.getMailAdresse()+"',"
-						+ "	user_adress= '"+student.getAdress()+"',user_phone = '"+student.getNumberPhone()+"',user_birthdate='"+student.getLastName()+"' where user_id='"+student.getId() +"'" ;
+			String sql = "UPDATE ds_users set user_firstname ='"+student.getFirstName()+"', user_lastname= '"+student.getLastName()+"', user_email='"+student.getMailAdresse()+"',"
+						+ "	user_address= '"+student.getAdress()+"',user_phone = '"+student.getNumberPhone()+"',user_birthdate='"+student.getLastName()+"' where user_id='"+student.getId() +"'" ;
 			resultat=st.executeUpdate(sql);
 			if(resultat==0) {
 				System.out.println("Aucune modification n'a était faite");
