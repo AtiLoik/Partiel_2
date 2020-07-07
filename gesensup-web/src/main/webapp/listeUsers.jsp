@@ -15,6 +15,8 @@
 		
 			<%@include file="menu.jsp" %>
 			
+			
+			
 			<table id="table_id" class="display">
 			    <thead>
 			        <tr>
@@ -38,9 +40,3 @@
 		</div>
 	</body>
 </html>
-
-<script>
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-</script>

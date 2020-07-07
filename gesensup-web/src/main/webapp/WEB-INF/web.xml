@@ -4,5 +4,15 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>AuthentificationServlet</servlet-name>
+		<display-name>AuthentificationServlet</display-name>
+		<description></description>
+		<servlet-class>com.ensup.master.servlets.AuthentificationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthentificationServlet</servlet-name>
+		<url-pattern>/AuthentificationServlet</url-pattern>
+	</servlet-mapping>
 	
 </web-app>
