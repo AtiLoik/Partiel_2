@@ -1,8 +1,8 @@
-package com.ensup.master.service;
+package com.ensup.master.serviceImpl;
 
-import com.ensup.master.dao.ICourseDao;
+import com.ensup.master.daoImpl.ICourseDao;
 import com.ensup.master.metier.Course;
-import com.ensup.master.serviceImpl.ICourseService;
+import com.ensup.master.service.ICourseService;
 
 /**
  * CourseService

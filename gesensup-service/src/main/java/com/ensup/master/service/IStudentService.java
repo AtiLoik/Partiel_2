@@ -1,13 +1,14 @@
-package com.ensup.master.serviceImpl;
+package com.ensup.master.service;
 
 import java.util.List;
 
-import com.ensup.master.service.IStudentDao;
-import com.ensup.master.service.Student;
+import com.ensup.master.daoImpl.IStudentDao;
+import com.ensup.master.metier.Student;
 
-public interface IStudentService {
+
+public interface IStudentService  {
 	
-	public StudentService(IStudentDao dao);
+	public void  StudentService(IStudentDao dao);
 	
 	
 	public void createStudent(Student student) ;
