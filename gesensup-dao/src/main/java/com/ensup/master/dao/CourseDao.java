@@ -1,13 +1,15 @@
-package com.ensup.master.daoImpl;
+package com.ensup.master.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.ensup.master.daoImpl.ICourseDao;
+import com.ensup.master.daoImpl.IStudentDao;
 import com.ensup.master.metier.Course;
 
-public class CourseDao {
+public class CourseDao implements ICourseDao {
 
 	
 	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
