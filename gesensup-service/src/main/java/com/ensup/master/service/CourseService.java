@@ -2,6 +2,7 @@ package com.ensup.master.service;
 
 import com.ensup.master.dao.ICourseDao;
 import com.ensup.master.metier.Course;
+import com.ensup.master.serviceImpl.ICourseService;
 
 /**
  * CourseService
@@ -9,7 +10,7 @@ import com.ensup.master.metier.Course;
  * @author DANON
  *
  */
-public class CourseService {
+public class CourseService implements ICourseService {
 
 	ICourseDao dao;
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ensup.master.dao.IStudentDao;
 import com.ensup.master.metier.Student;
+import com.ensup.master.serviceImpl.IStudentService;
 
 /**
  * StudentService
@@ -11,7 +12,7 @@ import com.ensup.master.metier.Student;
  * @author DANON
  *
  */
-public class StudentService {
+public class StudentService implements IStudentService {
 
 	IStudentDao dao;
 	
@@ -67,4 +68,6 @@ public class StudentService {
 		
 		return dao.getUser(email);
 	}
+
+
 }
