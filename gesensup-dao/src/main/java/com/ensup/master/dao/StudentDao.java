@@ -1,4 +1,4 @@
-package com.ensup.master.daoImpl;
+package com.ensup.master.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.ensup.master.daoImpl.IStudentDao;
 import com.ensup.master.metier.Student;
 
-public class StudentDao {
+public class StudentDao implements IStudentDao {
 
 	private String url = "jdbc:mysql://localhost/dougschool?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	private String sql_login = "root";
@@ -47,7 +48,7 @@ public class StudentDao {
 	 * @param id
 	 * @return student
 	 */
-	public Student getStudent(int  id) {
+	public Student getStudent(int id) {
 		Connection cn = null;
 		Statement st = null;
 		ResultSet rs = null;
@@ -214,4 +215,7 @@ public class StudentDao {
 			}
 		}
 	}
+
+	
+
 }

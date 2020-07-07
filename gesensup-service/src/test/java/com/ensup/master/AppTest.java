@@ -2,12 +2,13 @@ package com.ensup.master;
 
 import org.mockito.Mockito;
 
-import com.ensup.master.dao.ICourseDao;
-import com.ensup.master.dao.IStudentDao;
+import com.ensup.master.daoImpl.ICourseDao;
+import com.ensup.master.daoImpl.IStudentDao;
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

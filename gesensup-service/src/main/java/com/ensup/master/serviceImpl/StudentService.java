@@ -2,8 +2,9 @@ package com.ensup.master.serviceImpl;
 
 import java.util.List;
 
-import com.ensup.master.dao.IStudentDao;
+import com.ensup.master.daoImpl.IStudentDao;
 import com.ensup.master.metier.Student;
+import com.ensup.master.service.IStudentService;
 
 /**
  * StudentService
@@ -11,7 +12,7 @@ import com.ensup.master.metier.Student;
  * @author DANON
  *
  */
-public class StudentService {
+public class StudentService implements IStudentService {
 
 	IStudentDao dao;
 	
@@ -67,4 +68,12 @@ public class StudentService {
 		
 		return dao.getUser(email);
 	}
+
+	@Override
+	public void StudentService(IStudentDao dao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

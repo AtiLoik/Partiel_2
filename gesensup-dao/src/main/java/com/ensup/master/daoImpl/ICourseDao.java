@@ -1,4 +1,4 @@
-package com.ensup.master.dao;
+package com.ensup.master.daoImpl;
 
 import com.ensup.master.metier.Course;
 
